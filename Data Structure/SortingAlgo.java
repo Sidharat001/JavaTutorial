@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class BubbleSort {
+public class SortingAlgo {
 
   public static void main(String agrs[]) {
     Scanner Input = new Scanner(System.in);
@@ -9,7 +9,7 @@ public class BubbleSort {
     // Create Dyanmic Array
     System.out.print("Enter The Array Size : ");
     int size = Input.nextInt();
-    int[] arr = BubbleSort.createArray(size, Input);
+    int[] arr = SortingAlgo.createArray(size, Input);
 
     // Get Option From Users
     int Option;
@@ -18,10 +18,10 @@ public class BubbleSort {
 
       switch (Option) {
         case 1:
-          SortArr = BubbleSort.BubbleSort(arr);
+          SortArr = SortingAlgo.BubbleSort(arr);
           break;
         case 2:
-        SortArr = BubbleSort.SelectionSort(arr);
+        SortArr = SortingAlgo.SelectionSort(arr);
         break;
         default:
           break;
