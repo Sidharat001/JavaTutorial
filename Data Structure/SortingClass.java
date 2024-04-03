@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class SortingAlgo {
+public class SortingClass {
 
   public static void main(String agrs[]) {
     Scanner Input = new Scanner(System.in);
@@ -9,7 +9,7 @@ public class SortingAlgo {
     // Create Dyanmic Array
     System.out.print("Enter The Array Size : ");
     int size = Input.nextInt();
-    int[] arr = SortingAlgo.createArray(size, Input);
+    int[] arr = createArray(size, Input);
 
     // Get Option From Users
     int Option;
@@ -18,23 +18,27 @@ public class SortingAlgo {
 
       switch (Option) {
         case 1:
-          SortArr = SortingAlgo.BubbleSort(arr);
+          SortArr = BubbleSort(arr);
           break;
         case 2:
-        SortArr = SortingAlgo.SelectionSort(arr);
-        break;
+          SortArr = SelectionSort(arr);
+          break;
+        case 3:
+          SortArr = InsertionSort(arr);
+          break;
         default:
           break;
-      };
+      }
+      ;
     } while (Option != 6);
 
     // Display all array values
-    if(SortArr != null){
+    if (SortArr != null) {
       System.out.println("--------Display All Value--------");
       for (int number : SortArr) {
         System.out.print(number + " ");
       }
-    }else
+    } else
       System.out.println("No sorting operation performed.");
   }
 
@@ -79,12 +83,12 @@ public class SortingAlgo {
     return input.nextInt();
   }
 
-  public static int[] SelectionSort(int[] arr){
+  public static int[] SelectionSort(int[] arr) {
     int length = arr.length - 1;
-    for(int i=0; i < length; i++){
+    for (int i = 0; i < length; i++) {
       int minIndex = i;
-      for(int j=i+1; j < length; j++){
-        if(arr[minIndex] > arr[j])
+      for (int j = i + 1; j < length; j++) {
+        if (arr[minIndex] > arr[j])
           minIndex = j;
       }
       int temp = arr[i];
@@ -92,6 +96,24 @@ public class SortingAlgo {
       arr[minIndex] = temp;
     }
     System.out.println("Selection Sort Apply Successfully");
+    return arr;
+  }
+
+  public static int[] InsertionSort(int arr[]) {
+    int length = arr.length;
+    for (int i = 1; i < length; i++) {
+      int value = arr[i];
+      int key = i - 1;
+      // Move elements of arr[0..i-1] that are greater than value, one position to the
+      // right
+      while (key >= 0 && arr[key] > value) {
+        arr[key + 1] = arr[key];
+        key--;
+      }
+      // Place value at its correct position
+      arr[key + 1] = value;
+    }
+    System.out.println("Insertion Sort Apply Successfully ");
     return arr;
   }
 }
